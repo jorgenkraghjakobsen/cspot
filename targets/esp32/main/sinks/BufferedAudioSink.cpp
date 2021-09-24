@@ -17,7 +17,8 @@ static void i2sFeed(void *pvParameters)
             size_t written = 0;
             while (written < itemSize)
             {
-                i2s_write((i2s_port_t)0, item, itemSize, &written, portMAX_DELAY);
+                //i2s_write((i2s_port_t)0, item, itemSize, &written, portMAX_DELAY);
+                i2s_write_expand((i2s_port_t)0, item, itemSize,16,32, &written, portMAX_DELAY);
             }
             vRingbufferReturnItem(dataBuffer, (void *)item);
         }
